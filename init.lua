@@ -1,7 +1,9 @@
 -- Load settings
 require("config.options")
-require("config.keymaps")
 
 -- Load plugins
 require("plugins")
+
+-- Load keymaps
+require("config.keymaps")
 

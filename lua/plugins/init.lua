@@ -29,6 +29,5 @@ require("lazy").setup({
   { import = "plugins.neo-tree" },
 })
 
-require("catppuccin").setup()
 vim.cmd.colorscheme "catppuccin"
 
