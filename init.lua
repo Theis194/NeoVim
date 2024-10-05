@@ -6,4 +6,3 @@ require("plugins")
 
 -- Load keymaps
 require("config.keymaps")
-
