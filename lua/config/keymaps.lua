@@ -14,9 +14,3 @@ map("i", "<C-h>", "<Left>", opts)
 map("i", "<C-l>", "<Right>", opts)
 map("i", "<C-j>", "<Down>", opts)
 map("i", "<C-k>", "<Up>", opts)
-
--- Copilot
-map("n", "<leader>cc", ":CopilotChatOpen<CR>", opts)
-map("n", "<leader>cd", ":CopilotChatClose<CR>", opts)
-map("n", "<leader>cr", ":CopilotChatReset<CR>", opts)
-map("n", "<leader>cce", ":CopilotChatExplain<CR>", opts)
