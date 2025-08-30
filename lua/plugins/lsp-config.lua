@@ -28,6 +28,21 @@ return {
                 local opts = { noremap = true, silent = true, buffer = bufnr }
                 vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+
+                -- Show diagnostics in a floating window
+                vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
+
+                -- Navigate diagnostics
+                vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+                vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+
+                vim.keymap.set("n", "[w", function()
+                    vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.WARN })
+                end, opts)
+
+                vim.keymap.set("n", "]w", function()
+                    vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.WARN })
+                end, opts)
             end
 
             vim.lsp.config("lua_ls", {

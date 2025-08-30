@@ -26,21 +26,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end,
 })
 
-
-vim.api.nvim_create_autocmd("User", {
-    pattern = "MasonToolsStartingInstall",
-    callback = function()
-        vim.o.shell = "/bin/bash" -- Temporarily use Bash
-    end,
-})
-
-vim.api.nvim_create_autocmd("User", {
-    pattern = "MasonToolsUpdateCompleted",
-    callback = function()
-        vim.o.shell = "fish" -- Revert to Fish afterward
-    end,
-})
-
 if vim.g.env_vars["WINDOWS"] == "true" then
     -- disable netrw at the very start of your init.lua
     vim.g.loaded_netrw = 1
