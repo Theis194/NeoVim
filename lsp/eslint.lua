@@ -1,6 +1,3 @@
-local lspconfig = require("lspconfig")
-local util = lspconfig.util
-
 return {
     cmd = { "vscode-eslint-language-server", "--stdio" },
     filetypes = {
@@ -15,7 +12,7 @@ return {
         "astro",
         "htmlangular",
     },
-    root_markers = util.root_markers(".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json", "package.json", ".git"),
+    root_markers = { ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json", "package.json", ".git" },
     settings = {
         codeAction = {
             disableRuleComment = {

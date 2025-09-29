@@ -8,7 +8,7 @@ return {
         "javascript.jsx",
         "typescript.tsx",
     },
-    root_markers = { "package.json", "tsconfig.json", ".git" },
+    root_markers = {"package.json", "tsconfig.json", ".git"},
     single_file_support = true,
     log_level = vim.lsp.protocol.MessageType.Warning,
 }
