@@ -15,16 +15,17 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-    { import = "plugins.general" },
-    { import = "plugins.telescope" },
-    { import = "plugins.tree-sitter" },
-    { import = "plugins.neo-tree" },
-    { import = "plugins.lualine" },
-    { import = "plugins.lsp-config" },
-    { import = "plugins.alpha" },
-    { import = "plugins.completions" },
+require("lazy").setup({import = "plugins"}, {
+    install = {
+        missing = true,
+        colorscheme = { "catppuccin"},
+    },
+    checker = {
+        enabled = true,
+        notify = false,
+    },
+    change_detection = {
+        enabled = true,
+        notify = false,
+    },
 })
-
--- Set colorscheme
-vim.cmd.colorscheme("catppuccin")

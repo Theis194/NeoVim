@@ -78,5 +78,11 @@ return {
             vim.keymap.set("n", "<leader>ss", "<cmd>SessionSave<cr>")
             vim.keymap.set("n", "<leader>sl", "<cmd>SessionLoad<cr>")
         end,
-    }
+    },
+    {
+        "OXY2DEV/markview.nvim",
+        lazy = false,
+
+        priority = 49,
+    },
 }

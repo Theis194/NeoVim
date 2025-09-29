@@ -13,9 +13,11 @@ return {
                     "lua_ls",
                     "rust_analyzer",
                 },
+                automatic_installation = false,
             })
         end,
     },
+    --[[
     {
         "neovim/nvim-lspconfig",
         dependencies = {
@@ -33,40 +35,22 @@ return {
                 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
 
                 -- Navigate diagnostics
-                vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-                vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-
-                vim.keymap.set("n", "[w", function()
-                    vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.WARN })
+                vim.keymap.set("n", "[d", function()
+                    vim.diagnostic.jump({ count = -1, float = true })
                 end, opts)
 
-                vim.keymap.set("n", "]w", function()
-                    vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.WARN })
+                vim.keymap.set("n", "]d", function()
+                    vim.diagnostic.jump({ count = 1, float = true })
                 end, opts)
             end
 
-            vim.lsp.config("lua_ls", {
-                capabilities = capabilities,
-                on_attach = on_attach,
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = { "vim" }
-                        }
-                    }
-                }
-            })
-
-            vim.lsp.config("rust_analyzer", {
-                capabilities = capabilities,
-                on_attach = on_attach,
-                settings = {
-                    ["rust_analyzer"] = {
-                        cargo = { allFeatures = true },
-                        procMacro = { enabled = true },
-                    },
-                },
-            })
+            local lsp_dir = vim.fn.stdpath("config") .. "/lua/lsp"
+            for _, file in ipairs(vim.fn.readdir(lsp_dir, [[v:val =~ '\.lua$'\]\])) do
+                local server = file:gsub("%.lua$", "")
+                local setup = require("lsp." .. server)
+                setup(on_attach, capabilities)
+            end
         end,
-    },
+    },]]
+
 }

@@ -19,6 +19,10 @@ opt.expandtab = true
 -- Cursor
 opt.scrolloff = 10
 
+-- Timing
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
+
 -- Auto-format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
     callback = function()

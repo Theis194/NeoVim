@@ -6,7 +6,16 @@ require("load_env")
 require("config.options")
 
 -- Load plugins
-require("plugins")
+require("core.lazy")
+
+-- Load lsps
+require("core.lsp")
 
 -- Load keymaps
 require("config.keymaps")
+
+-- Load auto commands
+require("config.autocmds")
+
+-- Set colorscheme
+vim.cmd.colorscheme("catppuccin")
