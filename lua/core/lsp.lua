@@ -6,6 +6,7 @@ vim.lsp.enable({
     "ts_ls",
     "html",
     "tailwindcss",
+    "roslyn_ls",
 })
 
 vim.diagnostic.config({

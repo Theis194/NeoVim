@@ -16,6 +16,3 @@ require("config.keymaps")
 
 -- Load auto commands
 require("config.autocmds")
-
--- Set colorscheme
-vim.cmd.colorscheme("catppuccin")

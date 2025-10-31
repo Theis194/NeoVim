@@ -24,6 +24,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("<leader>lr", vim.lsp.buf.rename, "Rename all references")
         map("<leader>lf", vim.lsp.buf.format, "Format")
         map("<leader>v", "<cmd>vsplit | lua vim.lsp.buf.definition()<cr>", "Goto Definition in Vertical Split")
+        
+        -- Check attatched lsp's
+        map('<leader>ll', function()
+            local clients = vim.lsp.get_active_clients()
+            for _, client in ipairs(clients) do
+                print(string.format("%s: %s", client.name, client.attached_buffers and "attached" or "not attached"))
+            end
+        end,
+        "Display attached lsp's"
+        )
+
 
         local function client_supports_method(client, method, bufnr)
             if vim.fn.has 'nvim-0.11' == 1 then

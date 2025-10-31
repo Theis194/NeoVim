@@ -14,3 +14,4 @@ map("i", "<C-h>", "<Left>", opts)
 map("i", "<C-l>", "<Right>", opts)
 map("i", "<C-j>", "<Down>", opts)
 map("i", "<C-k>", "<Up>", opts)
+

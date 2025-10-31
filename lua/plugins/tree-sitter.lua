@@ -13,7 +13,11 @@ return {
                     "typescript",
                     "html",
                     "css",
-                    "rust"
+                    "rust",
+                    "markdown",
+                    "markdown_inline",
+                    "c_sharp",
+                    "razor",
                 },
                 ignore_install = {},
                 modules = {},
@@ -23,6 +27,9 @@ return {
                 indent = { enable = true },
             })
         end,
+
+        vim.treesitter.language.register("c_sharp", "cs"),
+        vim.treesitter.language.register("c_sharp", "csharp"),
     },
     {
         "nvim-treesitter/nvim-treesitter",

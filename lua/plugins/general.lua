@@ -1,13 +1,5 @@
 return {
     {
-        "catppuccin/nvim",
-        name = "catppuccin",
-        priority = 1000,
-        config = function()
-            require("catppuccin").setup()
-        end,
-    },
-    {
         "nvimtools/none-ls.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
@@ -82,7 +74,15 @@ return {
     {
         "OXY2DEV/markview.nvim",
         lazy = false,
+        config = function()
+            local presets = require("markview.presets");
 
+            require("markview").setup({
+                markdown = {
+                    headings = presets.headings.glow,
+                },
+            })
+        end,
         priority = 49,
     },
 }
