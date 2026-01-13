@@ -23,6 +23,11 @@ return {
         end,
     },
     {
+        'mrcjkb/haskell-tools.nvim',
+        version = '^6',
+        lazy = false,
+    },
+    {
         "seblyng/roslyn.nvim",
         ft = { "cs", "razor" },
         dependencies = {

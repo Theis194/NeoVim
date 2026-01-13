@@ -1,9 +1,10 @@
 vim.lsp.enable({
     "rust_analyzer",
     "lua_ls",
-    "hls",
-    --    "eslint",
-    "ts_ls",
+    -- "hls",
+    -- "eslint",
+    -- "ts_ls",
+    "denols",
     "html",
     "tailwindcss",
     "roslyn_ls",
