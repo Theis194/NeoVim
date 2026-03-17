@@ -16,3 +16,6 @@ require("config.keymaps")
 
 -- Load auto commands
 require("config.autocmds")
+
+-- Load debugger
+require("config.debug")
