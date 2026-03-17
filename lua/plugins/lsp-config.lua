@@ -22,11 +22,7 @@ return {
             })
         end,
     },
-    {
-        'mrcjkb/haskell-tools.nvim',
-        version = '^6',
-        lazy = false,
-    },
+    { "Civitasv/cmake-tools.nvim", opts = {} },
     {
         "seblyng/roslyn.nvim",
         ft = { "cs", "razor" },
@@ -80,6 +76,6 @@ return {
 
             -- If the plugin should silence notifications about initialization
             silent = false,
-        }
-    }
+        },
+    },
 }
