@@ -1,4 +1,11 @@
-local mason_dap = require("mason-nvim-dap")
+vim.pack.add({
+	"https://github.com/rcarriga/nvim-dap-ui",
+	"https://github.com/nvim-neotest/nvim-nio",
+	"https://github.com/theHamsta/nvim-dap-virtual-text",
+	"https://github.com/mfussenegger/nvim-dap",
+	"https://github.com/jay-babu/mason-nvim-dap.nvim",
+})
+
 local dap = require("dap")
 local ui = require("dapui")
 local dap_virtual_text = require("nvim-dap-virtual-text")
@@ -6,7 +13,7 @@ local dap_virtual_text = require("nvim-dap-virtual-text")
 -- Dap Virtual Text
 dap_virtual_text.setup()
 
-mason_dap.setup({
+require("mason-nvim-dap").setup({
 	ensure_installed = { "cppdbg" },
 	automatic_installation = true,
 	handlers = {
