@@ -23,6 +23,9 @@ opt.scrolloff = 10
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 
+-- Terminal colors
+vim.o.termguicolors = true
+
 -- Auto-format on save
 vim.api.nvim_create_autocmd("BufWritePre", {
     callback = function()
