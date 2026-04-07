@@ -13,15 +13,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 		end
 
-		-- Change indentation
-		local bufnr = event.buf
-		local ft = vim.bo[bufnr].filetype
-
-		if ft == "typescript" or ft == "javascript" then
-			vim.bo[bufnr].shiftwidth = 2
-			vim.bo[bufnr].tabstop = 2
-		end
-
 		-- defaults:
 		-- https://neovim.io/doc/user/news-0.11.html#_defaults
 
@@ -79,5 +70,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				end,
 			})
 		end
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
+	callback = function(event)
+		vim.bo[event.buf].shiftwidth = 2
+		vim.bo[event.buf].tabstop = 2
+		vim.bo[event.buf].softtabstop = 2
 	end,
 })
