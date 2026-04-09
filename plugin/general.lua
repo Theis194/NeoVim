@@ -16,7 +16,6 @@ null_ls.setup({
 		null_ls.builtins.formatting.dxfmt, -- Rust
 	},
 })
-vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
 
 require("nvim-autopairs").setup({
 	check_ts = true,
@@ -45,8 +44,6 @@ require("persisted").setup({
 	autosave = true,
 	autoload = true,
 })
-vim.keymap.set("n", "<leader>ss", "<cmd>SessionSave<cr>")
-vim.keymap.set("n", "<leader>sl", "<cmd>SessionLoad<cr>")
 
 local presets = require("markview.presets")
 require("markview").setup({

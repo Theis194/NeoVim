@@ -35,6 +35,11 @@ wk.add({
 		builtin.live_grep,
 		desc = "File grep",
 	},
+	{
+		"<leader>gf",
+		vim.lsp.buf.format,
+		desc = "Format file",
+	},
 	-- Diagnostics
 	{
 		"<C-w>d",
