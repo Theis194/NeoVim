@@ -23,13 +23,6 @@ vim.opt.timeoutlen = 300
 -- Terminal colors
 vim.o.termguicolors = true
 
--- Auto-format on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-	callback = function()
-		vim.lsp.buf.format()
-	end,
-})
-
 if vim.g.env_vars["WINDOWS"] == "true" then
 	-- disable netrw at the very start of your init.lua
 	vim.g.loaded_netrw = 1

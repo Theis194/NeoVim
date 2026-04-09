@@ -1,3 +1,10 @@
+--format on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+	callback = function()
+		vim.lsp.buf.format()
+	end,
+})
+
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
@@ -79,5 +86,39 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.bo[event.buf].shiftwidth = 2
 		vim.bo[event.buf].tabstop = 2
 		vim.bo[event.buf].softtabstop = 2
+	end,
+})
+
+vim.api.nvim_create_autocmd("PackChanged", {
+	callback = function(ev)
+		if ev.data.spec.name == "nvim-treesitter" and ev.data.kind == "update" then
+			if not ev.data.active then
+				vim.cmd.packadd("nvim-treesitter")
+			end
+			vim.cmd("TSUpdate")
+		end
+	end,
+})
+
+-- On file open, check if there already exists a parser for the filetype
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function(ev)
+		local lang = vim.treesitter.language.get_lang(ev.match)
+		if not lang then
+			return
+		end
+
+		local ok = pcall(vim.treesitter.language.inspect, lang)
+		if not ok then
+			require("nvim-treesitter.install").install(lang)
+		end
+	end,
+})
+
+vim.api.nvim_create_autocmd("PackChanged", {
+	callback = function(ev)
+		if ev.data.spec.name == "telescope-fzf-native.nvim" and ev.data.kind == "install" then
+			vim.system({ "make" }, { cmd = ev.data.spec.path })
+		end
 	end,
 })

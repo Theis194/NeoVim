@@ -11,32 +11,6 @@ require("nvim-ts-autotag").setup({
 	},
 })
 
-vim.api.nvim_create_autocmd("PackChanged", {
-	callback = function(ev)
-		if ev.data.spec.name == "nvim-treesitter" and ev.data.kind == "update" then
-			if not ev.data.active then
-				vim.cmd.packadd("nvim-treesitter")
-			end
-			vim.cmd("TSUpdate")
-		end
-	end,
-})
-
--- On file open, check if there already exists a parser for the filetype
-vim.api.nvim_create_autocmd("FileType", {
-	callback = function(ev)
-		local lang = vim.treesitter.language.get_lang(ev.match)
-		if not lang then
-			return
-		end
-
-		local ok = pcall(vim.treesitter.language.inspect, lang)
-		if not ok then
-			require("nvim-treesitter.install").install(lang)
-		end
-	end,
-})
-
 local config = require("nvim-treesitter.config")
 config.setup({
 	install_dir = vim.fn.stdpath("data") .. "/site",
