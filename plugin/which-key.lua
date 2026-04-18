@@ -14,6 +14,16 @@ wk.add({
 		silent = true,
 	},
 	{
+		"<leader>h",
+		":split<CR>",
+		desc = "Split horizontally",
+	},
+	{
+		"<esc>",
+		":noh<CR>",
+		desc = "Remove highlight",
+	},
+	{
 		mode = "i",
 		{ "<C-h>", "<Left>", hidden = true },
 		{ "<C-j>", "<Right>", hidden = true },
@@ -36,9 +46,9 @@ wk.add({
 		desc = "File grep",
 	},
 	{
-		"<leader>gf",
-		vim.lsp.buf.format,
-		desc = "Format file",
+		"<leader>gd",
+		vim.lsp.buf.definition,
+		desc = "Go to definition",
 	},
 	-- Diagnostics
 	{
@@ -52,6 +62,14 @@ wk.add({
 			vim.diagnostic.setqflist({ open = true })
 		end,
 		desc = "All diagnostics (quickfix)",
+	},
+	-- vim tmux navigator
+	{
+		{ "<c-h>", vim.cmd.TmuxNavigateLeft },
+		{ "<c-j>", vim.cmd.TmuxNavigateDown },
+		{ "<c-k>", vim.cmd.TmuxNavigateUp },
+		{ "<c-l>", vim.cmd.TmuxNavigateRight },
+		{ "<c-\\>", vim.cmd.TmuxNavigatePrevious },
 	},
 	-- Debugger
 	{
