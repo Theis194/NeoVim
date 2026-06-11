@@ -7,6 +7,7 @@ vim.pack.add({
 	"https://github.com/olimorris/persisted.nvim",
 	"https://github.com/OXY2DEV/markview.nvim",
 	"https://github.com/christoomey/vim-tmux-navigator",
+	"https://github.com/tris203/precognition.nvim",
 })
 
 local null_ls = require("null-ls")
@@ -75,4 +76,8 @@ require("vim._core.ui2").enable({
 			height = 1, -- Maximum height.
 		},
 	},
+})
+
+require("precognition").setup({
+	startVisible = true, -- false = turn of inline hints
 })
